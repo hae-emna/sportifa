@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of Users</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Bio</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstname ~ user.lastname }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.bio }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3>Average:{{ avg}} </h3>
+    <h3>Count: {{ count }}</h3>
+    <h3>Minimum age:{{ max }}</h3>
+    <h3>Maximum age: {{ min }}</h3>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'backbase.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+<html>
+
+<body>
+
+    <h1>Categorie index</h1>
+
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_Categorie</th>
+                <th>Desciption</th>
+                <th>Type</th>
+                <th>Reference</th>
+                <th>Date_Ajout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.NomCategorie }}</td>
+                <td>{{ categorie.Desciption }}</td>
+                <td>{{ categorie.Type }}</td>
+                <td>{{ categorie.Reference }}</td>
+                <td>{{ categorie.DateAjout? categorie.DateAjout|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_new') }}">Create new</a>
+{% endblock %}

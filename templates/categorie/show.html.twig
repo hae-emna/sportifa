@@ -1,0 +1,42 @@
+{% extends 'backbase.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_Categorie</th>
+                <td>{{ categorie.NomCategorie }}</td>
+            </tr>
+            <tr>
+                <th>Desciption</th>
+                <td>{{ categorie.Desciption }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ categorie.Type }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ categorie.Reference }}</td>
+            </tr>
+            <tr>
+                <th>Date_Ajout</th>
+                <td>{{ categorie.DateAjout }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_index') }}">back to list</a>
+
+    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+{% endblock %}

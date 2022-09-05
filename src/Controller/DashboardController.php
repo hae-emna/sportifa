@@ -33,6 +33,16 @@ class DashboardController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+            //$uploads_directory = $this->getParameter('uploads_directory');
+
+            $filename = md5(uniqid()) . '.' . $image->guessExtension();
+            $image->move(
+                'uploads_directory',
+                $filename
+
+            );
+            $this->getUser()->setImage($filename);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('profile_settings');
         }

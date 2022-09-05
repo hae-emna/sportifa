@@ -1,0 +1,45 @@
+{% extends 'backbase.html.twig' %}
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css"
+          integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    <style>
+        #calendrier{
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {#  {{ dump(data) }}#}
+    <div id="calendrier">
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"
+        integrity="sha256-ekrJn2FeZaiUFq99QswpQCUTME/HxaDfX7R8INzKJGE=" crossorigin="anonymous"></script>
+<script>
+    window.onload = () => {
+    let calendarElt = document.querySelector("#calendrier")
+    let calendar = new FullCalendar.Calendar(calendarElt, {
+    initialView: 'dayGridMonth',
+    locale:'fr',
+    timeZone:'Europe/Paris',
+    headerToolbar: {
+    start: 'prev,next today',
+    center:'title',
+    end:'dayGridMonth,timeGridWeek'
+},
+    events: {{ data|raw}}
+            })
+
+            calendar.render()
+        }
+    </script>
+
+{% endblock %}
